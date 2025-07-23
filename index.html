@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sklep Demo</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Tutaj możesz wkleić kod Google Tag Manager (head) -->
+</head>
+<body>
+  <!-- Tutaj możesz wkleić kod Google Tag Manager (body) -->
+
+  <header>
+    <h1>Witamy w Sklepie Demo</h1>
+    <nav>
+      <a href="#produkty">Produkty</a>
+      <a href="#koszyk">Koszyk</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="produkty">
+      <h2>Nasze produkty</h2>
+      <div class="produkt">
+        <h3>Krem do twarzy</h3>
+        <p>Naturalny krem nawilżający – 50ml</p>
+        <button onclick="dodajDoKoszyka('Krem do twarzy')">Dodaj do koszyka</button>
+      </div>
+      <div class="produkt">
+        <h3>Szampon ziołowy</h3>
+        <p>Szampon wzmacniający – 250ml</p>
+        <button onclick="dodajDoKoszyka('Szampon ziołowy')">Dodaj do koszyka</button>
+      </div>
+    </section>
+
+    <section id="koszyk">
+      <h2>Twój koszyk</h2>
+      <ul id="lista-koszyka"></ul>
+    </section>
+
+    <section id="kontakt">
+      <h2>Formularz kontaktowy</h2>
+      <form id="formularz">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="wiadomosc">Wiadomość:</label>
+        <textarea id="wiadomosc" name="wiadomosc" required></textarea>
+        <button type="submit">Wyślij</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sklep Demo</p>
+  </footer>
+
+  <script>
+    const koszyk = [];
+
+    function dodajDoKoszyka(nazwa) {
+      koszyk.push(nazwa);
+      aktualizujKoszyk();
+      console.log(`Dodano do koszyka: ${nazwa}`);
+    }
+
+    function aktualizujKoszyk() {
+      const lista = document.getElementById('lista-koszyka');
+      lista.innerHTML = '';
+      koszyk.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        lista.appendChild(li);
+      });
+    }
+
+    document.getElementById('formularz').addEventListener('submit', function (e) {
+      e.preventDefault();
+      console.log('Formularz został wysłany');
+      alert('Dziękujemy za wiadomość!');
+    });
+  </script>
+</body>
+</html>
